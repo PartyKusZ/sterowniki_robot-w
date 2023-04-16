@@ -103,13 +103,7 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE BEGIN 2 */
-  //uint8_t test = 0x5A;
-  //if (HAL_I2C_Mem_Write(&hi2c1, 0xA0, 0x10, 1, &test, sizeof(test), 1000) != HAL_OK)
-  //  printf("zapis error");
 
-  //uint8_t result = 0;
-  //if (HAL_I2C_Mem_Read(&hi2c1, 0xA0, 0x10, 1, &result, sizeof(result),1000) != HAL_OK)
-  //  printf("odczyt error");*/
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -120,47 +114,15 @@ int main(void)
   	 HAL_Delay(1000);
   while (1)
   {
-	  //uint32_t start = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_1);
-	  //uint32_t stop = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_2);
-	 // printf("%.1f cm\n", (stop - start) / 58.0f);
-	  //printf("%d\r\n",result);
-	  /*if(HAL_I2C_IsDeviceReady(&hi2c1, 0xA0,5, 100) == HAL_OK){
-		  printf("1237\r\n");
-	  }else{
-		  printf("nie\r\n");
-	  }*/
-	  printf("start\n\r");
+	  uint32_t start = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_1);
+	  uint32_t stop = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_2);
+	  printf("%.1f cm\n", (stop - start) / 58.0f);
 
-	  for(uint8_t i=0; i<=128; i++)  {
-		  uint8_t dest;
-		  printf("testing:  0x%02X\n\r", i<<1);
-		  if (HAL_I2C_Mem_Read(&hi2c1, i<<1, 0x00, 1, &dest, sizeof(dest), 50) == HAL_OK) {
-		  		printf("ok address 0x%02X\n\r", i<<1);
-		  	}
-	  }
 
 	  HAL_Delay(1000);
 
-	  /*printf("zapis początek\n\r");
-	 uint8_t test = 0xA5;
-	if (HAL_I2C_Mem_Write(&hi2c1, 0xA0, 0x10, 1, &test, sizeof(test), 1000) != HAL_OK) {
-		printf("zapis error\n\r");
-	} else {
-		printf("zapis success\n\r");
-	}
-
-	  HAL_Delay(100);
 
 
-	uint8_t result = 0;
-	if (HAL_I2C_Mem_Read(&hi2c1, 0xA0, 0x10, 1, &result, sizeof(result),1000) != HAL_OK){
-		printf("odczyt error\n\r");
-	} else {
-		printf("odczyt success 0x%02X\n\r", result);
-	}*/
-
-	//printf("test\n\r");
-	  HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
