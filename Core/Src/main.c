@@ -138,7 +138,9 @@ int main(void)
 
 	  printf("%d\n\r", result);
 
-
+	  if(HAL_I2C_Mem_Write(&hi2c1, 0xA0, 0x10, 1, &test, sizeof(test), 100) == HAL_ERROR){
+	  		printf("hal busy\n\r");
+	  	  }
 
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
