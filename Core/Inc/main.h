@@ -68,10 +68,6 @@ void Error_Handler(void);
 #define VCP_RX_GPIO_Port GPIOA
 #define BIN2_SILNIK_Pin GPIO_PIN_4
 #define BIN2_SILNIK_GPIO_Port GPIOA
-#define BIN1_SILNIK_Pin GPIO_PIN_5
-#define BIN1_SILNIK_GPIO_Port GPIOA
-#define ULT3_ECHO_Pin GPIO_PIN_6
-#define ULT3_ECHO_GPIO_Port GPIOA
 #define PWM_SILNIK_2_Pin GPIO_PIN_7
 #define PWM_SILNIK_2_GPIO_Port GPIOA
 #define ULT3_TRIG_Pin GPIO_PIN_0
@@ -88,8 +84,12 @@ void Error_Handler(void);
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
 #define SWCLK_GPIO_Port GPIOA
-#define AIN1_SILNIK_Pin GPIO_PIN_4
+#define BIN1_SILNIK_Pin GPIO_PIN_15
+#define BIN1_SILNIK_GPIO_Port GPIOA
+#define AIN1_SILNIK_Pin GPIO_PIN_3
 #define AIN1_SILNIK_GPIO_Port GPIOB
+#define ULT3_ECHO_Pin GPIO_PIN_4
+#define ULT3_ECHO_GPIO_Port GPIOB
 #define AIN2_SILNIK_Pin GPIO_PIN_5
 #define AIN2_SILNIK_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */

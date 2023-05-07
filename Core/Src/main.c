@@ -132,6 +132,7 @@ int main(void)
 	  if(HAL_I2C_Mem_Write(&hi2c1, 0xA0, 0x10, 1, &test, sizeof(test), 100) != HAL_OK){
 		printf("Blad zapisu\n\r");
 	  }
+	   HAL_Delay(100);
 	  if (HAL_I2C_Mem_Read(&hi2c1, 0xA0, 0x10, 1, &result, sizeof(result), 100) != HAL_OK){
 		  printf("Blad odczytu\n\r");
 	  }
