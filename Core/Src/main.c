@@ -103,18 +103,7 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE BEGIN 2 */
-  uint8_t test = 0x5A;
-  uint8_t result = 0x00;
 
-  printf("start\n\r");
-
-  	  for(uint8_t i=0; i<=128; i++)  {
-  		  uint8_t dest;
-  		  printf("testing:  0x%02X\n\r", i<<1);
-  		  if (HAL_I2C_Mem_Read(&hi2c1, i<<1, 0x00, 1, &dest, sizeof(dest), 50) == HAL_OK) {
-  		  		printf("ok address 0x%02X\n\r", i<<1);
-  		  	}
-  	  }
 
 
 
@@ -129,21 +118,6 @@ int main(void)
   while (1)
   {
 
-	  if(HAL_I2C_Mem_Write(&hi2c1, 0xA0, 0x10, 1, &test, sizeof(test), 100) != HAL_OK){
-		printf("Blad zapisu\n\r");
-	  }
-	   HAL_Delay(100);
-	  if (HAL_I2C_Mem_Read(&hi2c1, 0xA0, 0x10, 1, &result, sizeof(result), 100) != HAL_OK){
-		  printf("Blad odczytu\n\r");
-	  }
-
-	  printf("%d\n\r", result);
-
-	  if(HAL_I2C_Mem_Write(&hi2c1, 0xA0, 0x10, 1, &test, sizeof(test), 100) == HAL_ERROR){
-	  		printf("hal busy\n\r");
-	  	  }
-
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
