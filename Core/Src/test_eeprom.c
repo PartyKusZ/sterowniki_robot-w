@@ -5,7 +5,7 @@
  *      Author: kubus
  */
 
-void test_eeprom(){
+/*void test_eeprom(){
 	uint8_t test = 0x5A;
 	  uint8_t result = 0x00;
 
@@ -24,7 +24,7 @@ void test_eeprom(){
 		  	  }
 
 		  HAL_Delay(1000);
-}
+}*/
 
 
 

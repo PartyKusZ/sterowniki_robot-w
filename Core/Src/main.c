@@ -103,7 +103,11 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE BEGIN 2 */
+  HAL_GPIO_WritePin(AIN2_SILNIK_GPIO_Port, AIN2_SILNIK_Pin, 1);
+  HAL_GPIO_WritePin(AIN1_SILNIK_GPIO_Port, AIN1_SILNIK_Pin, 0);
+  HAL_TIM_Base_Start_IT(&htim16);
 
+  HAL_TIM_PWM_Start(&htim16, TIM_CHANNEL_1);
 
 
 
@@ -113,10 +117,23 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
+//uint8_t i = 49;
+//	  __HAL_TIM_SetCompare(&htim16, TIM_CHANNEL_1, i);
 
   while (1)
   {
+
+	  for(uint8_t i = 0; i < 50; i++){
+		  __HAL_TIM_SetCompare(&htim16, TIM_CHANNEL_1, i);
+		  HAL_Delay(150);
+	  }
+
+	  for(uint8_t i = 49; i > 1 ; i--){
+		  __HAL_TIM_SetCompare(&htim16, TIM_CHANNEL_1, i);
+		  HAL_Delay(150);
+	  	  }
+
+
 
     /* USER CODE END WHILE */
 
