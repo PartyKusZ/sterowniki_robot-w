@@ -79,14 +79,14 @@ void Error_Handler(void);
 #define ULT2_TRIG_GPIO_Port GPIOA
 #define ULT1_TRIG_Pin GPIO_PIN_10
 #define ULT1_TRIG_GPIO_Port GPIOA
+#define BIN1_SILNIK_Pin GPIO_PIN_11
+#define BIN1_SILNIK_GPIO_Port GPIOA
 #define PWM_SILNIK_1_Pin GPIO_PIN_12
 #define PWM_SILNIK_1_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
 #define SWCLK_GPIO_Port GPIOA
-#define BIN1_SILNIK_Pin GPIO_PIN_15
-#define BIN1_SILNIK_GPIO_Port GPIOA
 #define AIN1_SILNIK_Pin GPIO_PIN_3
 #define AIN1_SILNIK_GPIO_Port GPIOB
 #define ULT3_ECHO_Pin GPIO_PIN_4
