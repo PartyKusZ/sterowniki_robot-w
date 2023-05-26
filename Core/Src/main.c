@@ -104,19 +104,45 @@ int main(void)
   /* USER CODE BEGIN 2 */
   /* USER CODE BEGIN 2 */
 
+  HAL_TIM_IC_Start(&htim1, TIM_CHANNEL_1);
+  HAL_TIM_IC_Start(&htim1, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
 
+  HAL_TIM_IC_Start(&htim2, TIM_CHANNEL_1);
+  HAL_TIM_IC_Start(&htim2, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
 
-
+  HAL_TIM_IC_Start(&htim3, TIM_CHANNEL_1);
+  HAL_TIM_IC_Start(&htim3, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
+  HAL_Delay(1000);
 
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
+  uint32_t start;
+  uint32_t stop;
 
   while (1)
   {
+	  start = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_1);
+	  stop = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_2);
+	  printf("ult 1: %.1f cm\n", (stop - start) / 58.0f);
+
+
+	  start = HAL_TIM_ReadCapturedValue(&htim2, TIM_CHANNEL_1);
+	  stop = HAL_TIM_ReadCapturedValue(&htim2, TIM_CHANNEL_2);
+	  printf("ult 2: %.1f cm\n", (stop - start) / 58.0f);
+
+
+	  start = HAL_TIM_ReadCapturedValue(&htim3, TIM_CHANNEL_1);
+	  stop = HAL_TIM_ReadCapturedValue(&htim3, TIM_CHANNEL_2);
+	  printf("ult 3: %.1f cm\n", (stop - start) / 58.0f);
+
+
+	  HAL_Delay(1000);
 
     /* USER CODE END WHILE */
 
