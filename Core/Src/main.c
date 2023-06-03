@@ -23,12 +23,12 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "ultrasound.h"
-#include "eeprom.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "ultrasound.h"
+#include "eeprom.h"
+#include "motors.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +48,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+uint8_t motor_state = 0; // for interrupt
 float distance_readings[3];		// array to contain data from ultrasound sensors
 /* USER CODE END PV */
 
@@ -60,6 +61,11 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	if(htim->Instance == TIM6){
+		motor_state = 1;
+	}
+}
 
 
 int _write(int file, char *prt, int len){
@@ -103,10 +109,13 @@ int main(void)
   MX_TIM16_Init();
   MX_TIM17_Init();
   MX_USART2_UART_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE BEGIN 2 */
 
   init_ultrasound_sensors();
+  motors_init();
+  HAL_TIM_Base_Start_IT(&htim6);
 
 
 
@@ -116,13 +125,23 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
+  go(&motor_state);
+//  HAL_Delay(1000);
+//  turn_right();
+//  HAL_Delay(1000);
+//  stop();
+//  HAL_Delay(1000);
+//  turn_left();
+//  HAL_Delay(1000);
+//  stop();
 
   while (1)
   {
+	  go(&motor_state);
 	  read_distances(distance_readings);
 	  write_to_eeprom(distance_readings);
 	  read_from_eeprom();
-	  HAL_Delay(500);
+//	  HAL_Delay(500);
 
 
     /* USER CODE END WHILE */
