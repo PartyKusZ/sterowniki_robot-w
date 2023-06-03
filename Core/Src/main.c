@@ -24,6 +24,7 @@
 #include "usart.h"
 #include "gpio.h"
 #include "ultrasound.h"
+#include "eeprom.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -119,9 +120,10 @@ int main(void)
   while (1)
   {
 	  read_distances(distance_readings);
-	  HAL_Delay(1000);
-	  for (int i=0; i<3; ++i)
-		  printf("ultr nr: %d ; odleglosc: %f \n \r", i, distance_readings[i]);
+	  write_to_eeprom(distance_readings);
+	  read_from_eeprom();
+	  HAL_Delay(500);
+
 
     /* USER CODE END WHILE */
 
