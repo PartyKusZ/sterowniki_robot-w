@@ -23,6 +23,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "ultrasound.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -46,7 +47,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+float distance_readings[3];		// array to contain data from ultrasound sensors
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,7 +105,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   /* USER CODE BEGIN 2 */
 
-
+  init_ultrasound_sensors();
 
 
 
@@ -117,6 +118,10 @@ int main(void)
 
   while (1)
   {
+	  read_distances(distance_readings);
+	  HAL_Delay(1000);
+	  for (int i=0; i<3; ++i)
+		  printf("ultr nr: %d ; odleglosc: %f \n \r", i, distance_readings[i]);
 
     /* USER CODE END WHILE */
 
