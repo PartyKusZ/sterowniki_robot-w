@@ -48,7 +48,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t motor_state = 0; // for interrupt
+volatile uint8_t motor_state = 0; // for interrupt
 float distance_readings[3];		// array to contain data from ultrasound sensors
 /* USER CODE END PV */
 
@@ -125,23 +125,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  go(&motor_state);
-//  HAL_Delay(1000);
-//  turn_right();
-//  HAL_Delay(1000);
-//  stop();
-//  HAL_Delay(1000);
-//  turn_left();
-//  HAL_Delay(1000);
-//  stop();
-
   while (1)
   {
-	  go(&motor_state);
 	  read_distances(distance_readings);
 	  write_to_eeprom(distance_readings);
 	  read_from_eeprom();
-//	  HAL_Delay(500);
+	  control(&motor_state, distance_readings);
+
 
 
     /* USER CODE END WHILE */

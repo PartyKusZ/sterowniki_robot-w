@@ -1,9 +1,3 @@
-/*
- * ultrasound.c
- *
- *  Created on: Jun 3, 2023
- *      Author: zuzanna
- */
 #include "ultrasound.h"
 
 void init_ultrasound_sensors()
@@ -40,5 +34,3 @@ void read_distances(float *tab)
 	stop = HAL_TIM_ReadCapturedValue(&htim3, TIM_CHANNEL_2);
 	tab[2] = (stop - start) / 58.0f;
 }
-
-
