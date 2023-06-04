@@ -1,10 +1,3 @@
-/*
- * eeprom.h
- *
- *  Created on: 3 cze 2023
- *      Author: kubus
- */
-
 #ifndef INC_EEPROM_H_
 #define INC_EEPROM_H_
 
