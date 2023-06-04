@@ -107,17 +107,17 @@ void control(volatile uint8_t *state,float *tab){
 		go(state);
 	}else{
 		min_dist_index = find_min_dist_index(tab);
-		if(min_dist_index == 1){
+		if(min_dist_index == FRONT_ULTRASOUND){
 			max_dist_index = find_max_dist_index(tab);
-			if(max_dist_index == 0){
+			if(max_dist_index == LEFT_ULTRASOUND){
 				turn_left();
 			}
-			if(max_dist_index == 2){
+			if(max_dist_index == RIGHT_ULTRASOUND){
 				turn_right();
 			}
-		}else if(min_dist_index == 0){
+		}else if(min_dist_index == LEFT_ULTRASOUND){
 			turn_right();
-		}else if(min_dist_index == 2){
+		}else if(min_dist_index == RIGHT_ULTRASOUND){
 			turn_left();
 		}
 	}

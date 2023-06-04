@@ -8,6 +8,10 @@
 #define TURNING_SPEED 80
 #define SECURE_DISTANCE 15
 
+#define LEFT_ULTRASOUND 0
+#define FRONT_ULTRASOUND 1
+#define RIGHT_ULTRASOUND 2
+
 void motors_init();
 
 void set_speed(volatile uint8_t *state);
